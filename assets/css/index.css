@@ -4,36 +4,91 @@ html, body {
     font-family: "Roboto", sans-serif;
     font-weight: normal;
 }
-
-.container  {
-    width: 90vw;
-    max-width: 900px;
-    display: block;
+.section {
+    padding: 50px 0 25px;
+}
+.title {
+    font-weight: bold;
+}
+.texto-princial {
+    width: 83%;
     margin: 0 auto;
 }
-.bgGray {
+.container-listas {
+    margin: 0 auto;
+}
+.tx-azul {
+    color : #2dbfd8;
+}
+.bg-azul {
+    background-color : #2dbfd8;
+}
+.bgLightGray {
     background-color: #f5f5f5;
     box-shadow: 0 0 2px #f5f5f5;
 }
+
 /* Lista */
-.dList {
+.tableList {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     border: 2px solid #2dbfd8;
-    max-width: 300px;
 }
-.dList .lSub {
-    text-align: center;
+.tableList .lSub {
     color: White;
-    background-color: #2dbfd8;
+    padding: 10px 20px;
 }
-.dList dd {
-    margin: 0;
-    text-align: center;
+.tableList td {
+    background-color: White;
     padding: 5px 20px;
+}
+.tableList .bgGray {
+    background-color: #e6e6e6;
 }
 /* Form */
 .caForm {
     background-color: #2dbfd8;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 35px 25px;
+}
+.caForm .form-control {
+    margin-bottom: 10px;
+}
+.btnSubmit {
+    font-weight: bold;
+    width: initial;
+    display: inline-block;
+    padding: 10px 25px;
+    margin-top: 30px;
+    color: White;
+    background-color: #e9b82b;
+    user-select: none;
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    transition: background-color .5s;
+}
+.btnSubmit:hover {
+    background-color: #cb9e15;
+}
+.caForm legend {
+    border: none;
+    color: White;
+}
+.valido {
+    box-shadow: 0 0 inset 2px #00ff00;
+}
+
+@media (min-width: 767px) {
+    .container.listas {
+        max-width: 850px;
+    }
+    .lsLeft {
+        float: left;
+    }
+    .lsRight {
+        float: right;
+    }
 }
