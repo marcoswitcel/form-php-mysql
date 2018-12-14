@@ -5,10 +5,23 @@ html, body {
     font-weight: normal;
 }
 .section {
-    padding: 50px 0 25px;
+    padding: 3.15rem 0 1.56rem;
 }
 .title {
+    margin-bottom: 2em;
     font-weight: bold;
+}
+.title2 {
+    margin-bottom: 1.5em;
+}
+.title2CA {
+    margin: 1.5em 0 2.5em;
+}
+.lista-img .title2 {
+    margin-bottom: 2.5em;
+}
+p {
+    margin-bottom: 1.5em;
 }
 .texto-princial {
     width: 83%;
@@ -25,26 +38,60 @@ html, body {
 }
 .bgLightGray {
     background-color: #f5f5f5;
-    box-shadow: 0 0 2px #f5f5f5;
+    -webkit-box-shadow: 0 0 2px #f5f5f5;
+            box-shadow: 0 0 2px #f5f5f5;
 }
 
 /* Lista */
+.container.listas {
+    max-width: 500px;
+}
 .tableList {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     border: 2px solid #2dbfd8;
+    cursor: default;
+    margin-bottom: 3rem;
 }
 .tableList .lSub {
     color: White;
     padding: 10px 20px;
 }
-.tableList td {
+.tableList tr {
     background-color: White;
-    padding: 5px 20px;
+}
+.tableList td {
+    padding: 0 20px;
+    line-height: 1.2em;
+    height: 60px;
+    background-color: transparent;
+}
+.tableList td:hover {
+    background-color: rgba(0,0,0,.2);
 }
 .tableList .bgGray {
     background-color: #e6e6e6;
+}
+/* lista de imagens */
+.lista-img figure {
+    height: 280px;
+    margin-bottom: 3rem;
+}
+.lista-img figcaption {
+    position: absolute;
+    bottom: 0;
+    padding: 0 10%;
+    display: block;
+}
+@media (min-width: 1200px) {
+    .lista-img figcaption {
+        padding: 0 10%;
+    }   
+}
+.lista-img img {
+    max-width: 190px;
 }
 /* Form */
 .caForm {
@@ -52,9 +99,59 @@ html, body {
     max-width: 500px;
     margin: 0 auto;
     padding: 35px 25px;
+    position: relative;
+}
+.caForm legend {
+    border: none;
+    color: White;
 }
 .caForm .form-control {
-    margin-bottom: 10px;
+    margin-bottom: 23px;
+}
+.caForm label.error {
+    color: White;
+    position: relative;
+    display: block;
+    margin: 0;
+    height: 0;
+    top: -20px;
+    font-size: .9em;
+}
+.caForm.sending > * {
+    visibility: hidden;
+}
+.caForm.sending {
+    padding-left: 0;
+    padding-right: 0;
+}
+.containerLoader {
+    display: none;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;    
+}
+.sending .containerLoader {
+    display: block;
+    visibility: visible;
+}
+.caLoader {
+    width: 225px;
+    height: 225px;
+    border: 35px solid #e9b82b;
+    border-top-color: #f3f3f3;
+    border-bottom-color: #f3f3f3;
+    border-radius: 50%;
+    margin: 0 auto;
+    -webkit-animation: rotacao 2s linear infinite;
+            animation: rotacao 2s linear infinite;
+}
+@-webkit-keyframes rotacao {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg) }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg) }
+}
+@keyframes rotacao {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg) }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg) }
 }
 .btnSubmit {
     font-weight: bold;
@@ -64,26 +161,29 @@ html, body {
     margin-top: 30px;
     color: White;
     background-color: #e9b82b;
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     cursor: pointer;
     border-radius: 20px;
     border: none;
+    -webkit-transition: background-color .5s;
+    -o-transition: background-color .5s;
     transition: background-color .5s;
+}
+.btnSubmit:disabled {
+    background-color: #a3a3a3;
 }
 .btnSubmit:hover {
     background-color: #cb9e15;
 }
-.caForm legend {
-    border: none;
-    color: White;
-}
-.valido {
-    box-shadow: 0 0 inset 2px #00ff00;
-}
-
 @media (min-width: 767px) {
     .container.listas {
         max-width: 850px;
+    }
+    .tableList {
+        margin-bottom: 0;
     }
     .lsLeft {
         float: left;

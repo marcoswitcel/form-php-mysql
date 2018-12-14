@@ -1,12 +1,13 @@
 <?php
+    header('Content-Type: application/json');
     /**
      * Endpoint da tabela contato
+     * retorna as respostas em JSOn
      * Primeiro checa se todos os parametros estão presentes
      */
     if  (!isset($_POST['nome'], $_POST['email'], $_POST['numero'], $_POST['endereco'])) {
-        # @TODO ver se consigo implementar code 422 com o ajax
         http_response_code(422);
-        echo htmlentities('Parâmetro(s) não setado(s)');
+        echo json_encode(['mensagem' => 'Parâmetro(s) não setado(s)']);
         exit;
     }
 
@@ -20,18 +21,18 @@
      * os que falharem recebem null
      */
     $nome = trim($nome);
-    $nome = strlen($nome) > 3 ? $nome : null;
+    $nome = strlen($nome) > 2 ? $nome : null;
     $email = trim($email);
     $email = filter_var($email, FILTER_VALIDATE_EMAIL) ? $email: null;
     $numero = str_replace(['(', ')', ' ', '-'], '', $numero);
     $numero = preg_match('/^[0-9]+$/', $numero) ? $numero : '';
-    $numero = strlen($numero) >= 8 ? $numero : null;
+    $numero = strlen($numero) >= 10 ? $numero : null;
     $endereco = strlen($endereco) > 3 ? $endereco : null;;
 
     /* Checa se todos os parâmetros passaram no teste */
     if  (!isset($nome, $email, $numero, $endereco)) {
         http_response_code(422);
-        echo htmlentities('Parâmetro(s) inválido(s)');
+        echo json_encode(['mensagem' => 'Parâmetro(s) não setado(s)']);
         exit;
     }
 
@@ -44,10 +45,12 @@
         $contatoDAO = new ContatoDAO();
     
         $contatoDAO->save($contato);
-        echo 'Inseridos';
+        echo json_encode([
+            'mensagem' => 'Contato cadastrado!',
+        ]);
     } catch (Exception $ex) {
         error_log($e->getMessage());
         http_response_code(500);
-        echo 'Internal Server Error';
+        echo json_encode(['mensagem' => 'Internal Server Error']);
     }
 ?>
