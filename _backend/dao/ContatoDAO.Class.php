@@ -22,7 +22,7 @@ class ContatoDAO
 
         $stmt->bindValue(1, $objContato->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(2, $objContato->getEmail(), PDO::PARAM_STR);
-        $stmt->bindValue(3, $objContato->getNumero(), PDO::PARAM_INT);
+        $stmt->bindValue(3, $objContato->getNumero(), PDO::PARAM_STR);
         $stmt->bindValue(4, $objContato->getEndereco(), PDO::PARAM_STR);
         
         $stmt->execute();
