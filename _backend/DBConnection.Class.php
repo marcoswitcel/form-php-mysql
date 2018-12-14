@@ -1,5 +1,4 @@
-<?php /* @TODO ativar bind por banco na conexão */
-
+<?php 
 /**
  * Classe responsável por segurar a conexão
  */
@@ -32,6 +31,7 @@ class DBConnection
             /* Pega a conexão e seta o modo de notificação de */
             DBConnection::$CON = new PDO($conString, $user, $password);
             DBConnection::$CON->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            DBConnection::$CON->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (Exception $e) {
             /* Grava erro no log do apache */
             error_log($e->getMessage());
